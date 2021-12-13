@@ -7,3 +7,4 @@ Email very good spammer using burguer king API for IOS.
 pip install requirements.txt
 python3 main.py <email>
 ```
+# !! ONLY EDUCATIONAL PURPUSES 
