@@ -8,25 +8,7 @@ def convert(string):
 url1 = "https://bkmobile.burgerkingencasa.es/bknewuserapp.do"
 url2 = "https://bkmobile.burgerkingencasa.es/validateemail.do"
 
-def main():
-
-    email1 = sys.argv[1]
-    
-    email = email1.split("@")[0]
-    
-    mail_list = []
-    
-    for x in range(0, len(email)+1):
-        mail2 = convert(email)
-
-        mail2.insert(x, '.')
-        
-        mail3 = ''.join(mail2)
-        mail_list.append(mail3)  
-    
-    
-    for mail in mail_list:
-        mail = mail + "@" + email1.split("@")[1]
+def make_request(mail):
         try:
             headers = {
                 "user-agent": "Burger King®/7.0.1 (es.burgerking.burgerking-iphone; build:447; iOS 14.5.1) Alamofire/4.9.1",
@@ -56,12 +38,37 @@ def main():
             }
 
             r2 = requests.post(url2, data=params2, headers=headers)
-            print(r2)
+            return r2
+        except:
+            return("[!] Failure")
             
+def main():
+
+    email1 = sys.argv[1]
+    
+    email = email1.split("@")[0]
+    
+    mail_list = []
+    
+    for x in range(0, len(email)+1):
+        mail2 = convert(email)
+
+        mail2.insert(x, '.')
+        
+        mail3 = ''.join(mail2)
+        mail_list.append(mail3)  
+    
+    
+    for mail in mail_list:
+        make_request(email1)
+        try:
+            mail = mail + "@" + email1.split("@")[1]
+            m = make_request(mail)
+            print(m)
         except Exception as e:
-            print(e)
             print("[!] Failure")
-            pass    
+            print(e) 
+            pass
     
 if __name__ == "__main__":
     
@@ -69,5 +76,4 @@ if __name__ == "__main__":
         print(f"[!] Usage: python3 {sys.argv[0]} <mail>")
         sys.exit(1)
     
-
     main()
