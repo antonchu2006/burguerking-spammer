@@ -48,4 +48,4 @@ def splitter(email):
     
 
 if __name__ == "__main__":
-    splitter("antondc555@gmail.com")
+    splitter("example@example.com")
