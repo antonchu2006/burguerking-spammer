@@ -5,6 +5,6 @@ Email very good spammer using burguer king API for IOS.
 
 ```
 pip install requirements.txt
-python3 main.py <email>
+python3 spammer.py <email>
 ```
 # !! ONLY EDUCATIONAL PURPUSES 
